@@ -7,16 +7,30 @@ This is a test repository for error handling. We want to eventually use this rep
 To use this package, run `npm install genoptic-error-handler`<br />
 Then, you can import the function by using `import { getErrorMessage } from "genoptic-error-handler";`
 
-#### Example Usage
+`getErrorMessage(statusCode: number, response: Exception)` accepts two arguments. <br />
+`statusCode: number`: Represents the HTTP status code from the server. <br />
+`response: Exception`: represents the object sent from the server upon recieving an error <br />
 
-`console.log(getErrorMessage(error));`, where `error` is the HTTP response as a number
+### Example Usage
 
-#### How to push changes to NPM
+```console.log(
+  getErrorMessage(400, {
+    type: "ActionFailed",
+    details: ["ValueInvalid:Username", "ValueTooLarge:FirstName", "ValueRequired:Country"],
+    additional: [],
+  })
+);
+
+```
+
+Output: `The action failed. Value is invalid for Username. Value is too large for FirstName. Value is required for Country.`
+
+### How to push changes to NPM
 
 **Required:** You must be logged in as steven-genoptic by using the command `npm login`, then logging in <br />
 
 1. Make your changes within `/src/index.ts`
-2. Save your changes, then run the commant `tsc` in the root folder to compile the index.js
+2. Save your changes, then run the command `tsc` in the root folder to compile the index.js
 3. Copy the generated `index.js` from the root folder into the `index.js` within `/dist`
 4. Copy the `index.ts` you just edited from the root folder into the `index.d.ts` within `/dist`
 5. Update the version within `package.json`. This must be a higher version than before.
