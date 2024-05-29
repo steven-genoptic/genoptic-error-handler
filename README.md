@@ -10,3 +10,7 @@ Then, you can import the function by using `import { getErrorMessage } from "gen
 #### Example Usage
 
 `console.log(getErrorMessage(error));`, where `error` is the HTTP response as a number
+
+#### How to push changes to NPM
+
+Logged in as steven-genoptic on the npm website, run `npm publish`. Make sure you update the version within the package.json
