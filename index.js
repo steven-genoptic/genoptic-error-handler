@@ -12,6 +12,7 @@ const errorTypeDescriptions = {
     ServerError: "A server error occurred",
     TypeUnknown: "Type is unknown",
     Unauthorized: "Unauthorized access",
+    Unavailable: "Resource is unavailable",
     Unhandled: "An unhandled error occurred",
 };
 function get400ErrorMessage(response) {
