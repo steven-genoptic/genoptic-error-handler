@@ -13,4 +13,4 @@ Then, you can import the function by using `import { getErrorMessage } from "gen
 
 #### How to push changes to NPM
 
-Logged in as steven-genoptic on the npm website, run `npm publish`. Make sure you update the version within the package.json
+Logged in as steven-genoptic on the npm website: First run `tsc` to compile the index.js file within ./dist, then run `npm publish`. Make sure you update the version within the package.json
