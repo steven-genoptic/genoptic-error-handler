@@ -2,27 +2,27 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getErrorMessage = void 0;
 const errorTypeDescriptions = {
-    Unknown: "An unknown error occurred.",
-    ActionFailed: "The action failed.",
-    ValueInvalid: "Value is invalid.",
-    ValueRequired: "Value is required.",
-    ValueTooLarge: "Value is too large.",
-    ValueTooSmall: "Value is too small.",
-    ValueUnknown: "Value is unknown.",
-    ServerError: "A server error occurred.",
-    TypeUnknown: "Type is unknown.",
-    Unauthorized: "Unauthorized access.",
-    Unhandled: "An unhandled error occurred.",
+    Unknown: "An unknown error occurred",
+    ActionFailed: "The action failed",
+    ValueInvalid: "Value is invalid",
+    ValueRequired: "Value is required",
+    ValueTooLarge: "Value is too large",
+    ValueTooSmall: "Value is too small",
+    ValueUnknown: "Value is unknown",
+    ServerError: "A server error occurred",
+    TypeUnknown: "Type is unknown",
+    Unauthorized: "Unauthorized access",
+    Unhandled: "An unhandled error occurred",
 };
 function get400ErrorMessage(response) {
     const { type, details } = response;
-    const mainErrorMessage = errorTypeDescriptions[type] || "An error has occurred.";
+    const mainErrorMessage = errorTypeDescriptions[type] || "An error has occurred";
     const detailedMessages = details.map((detail) => {
         const [errorType, variable] = detail.split(":");
         const errorMessage = errorTypeDescriptions[errorType] || "An error has occurred";
         return `${errorMessage} for ${variable}.`;
     });
-    return `${mainErrorMessage} ${detailedMessages.join(" ")}`;
+    return `${mainErrorMessage}. ${detailedMessages.join(" ")}`;
 }
 function getErrorMessage(statusCode, response) {
     switch (statusCode) {

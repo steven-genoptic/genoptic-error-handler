@@ -5,23 +5,23 @@ type Exception = {
 };
 
 const errorTypeDescriptions: { [key: string]: string } = {
-  Unknown: "An unknown error occurred.",
-  ActionFailed: "The action failed.",
-  ValueInvalid: "Value is invalid.",
-  ValueRequired: "Value is required.",
-  ValueTooLarge: "Value is too large.",
-  ValueTooSmall: "Value is too small.",
-  ValueUnknown: "Value is unknown.",
-  ServerError: "A server error occurred.",
-  TypeUnknown: "Type is unknown.",
-  Unauthorized: "Unauthorized access.",
-  Unhandled: "An unhandled error occurred.",
+  Unknown: "An unknown error occurred",
+  ActionFailed: "The action failed",
+  ValueInvalid: "Value is invalid",
+  ValueRequired: "Value is required",
+  ValueTooLarge: "Value is too large",
+  ValueTooSmall: "Value is too small",
+  ValueUnknown: "Value is unknown",
+  ServerError: "A server error occurred",
+  TypeUnknown: "Type is unknown",
+  Unauthorized: "Unauthorized access",
+  Unhandled: "An unhandled error occurred",
 };
 
 function get400ErrorMessage(response: Exception): string {
   const { type, details } = response;
 
-  const mainErrorMessage = errorTypeDescriptions[type] || "An error has occurred.";
+  const mainErrorMessage = errorTypeDescriptions[type] || "An error has occurred";
 
   const detailedMessages = details.map((detail) => {
     const [errorType, variable] = detail.split(":");
@@ -29,7 +29,7 @@ function get400ErrorMessage(response: Exception): string {
     return `${errorMessage} for ${variable}.`;
   });
 
-  return `${mainErrorMessage} ${detailedMessages.join(" ")}`;
+  return `${mainErrorMessage}. ${detailedMessages.join(" ")}`;
 }
 
 export function getErrorMessage(statusCode: number, response: Exception): string {
