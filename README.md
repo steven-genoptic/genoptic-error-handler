@@ -22,4 +22,4 @@ Then, you can import the function by using `import { getErrorMessage } from "gen
 5. Update the version within `package.json`. This must be a higher version than before.
 6. Run the command `npm publish` to publish this new file.
 
-The package will be updated here: [npm/genopic-error-handler](https://www.npmjs.com/package/genoptic-error-handler)
+The package will be updated here: [npm/genoptic-error-handler](https://www.npmjs.com/package/genoptic-error-handler)
