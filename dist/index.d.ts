@@ -4,6 +4,11 @@ type Exception = {
   additional: string[];
 };
 
+type ErrorMessages = {
+  errorTitle: string;
+  errorMessage: string;
+};
+
 const errorTypeDescriptions: { [key: string]: string } = {
   Unknown: "An unknown error occurred",
   ActionFailed: "The action failed",
@@ -15,10 +20,11 @@ const errorTypeDescriptions: { [key: string]: string } = {
   ServerError: "A server error occurred",
   TypeUnknown: "Type is unknown",
   Unauthorized: "Unauthorized access",
+  Unavailable: "Resource is unavailable",
   Unhandled: "An unhandled error occurred",
 };
 
-function get400ErrorMessage(response: Exception): string {
+function get400ErrorMessage(response: Exception): ErrorMessages {
   const { type, details } = response;
 
   const mainErrorMessage = errorTypeDescriptions[type] || "An error has occurred";
@@ -29,22 +35,18 @@ function get400ErrorMessage(response: Exception): string {
     return `${errorMessage} for ${variable}.`;
   });
 
-  return `${mainErrorMessage}. ${detailedMessages.join(" ")}`;
+  return { errorTitle: mainErrorMessage, errorMessage: detailedMessages.join(" ") };
 }
 
-export function getErrorMessage(statusCode: number, response: Exception): string {
+export function getErrorMessage(statusCode: number, response: Exception): ErrorMessages {
   switch (statusCode) {
-    case 200:
-      return "Success!";
-    case 204:
-      return "The resource you are trying to access does not exist or you do not have the necessary permissions to access this resource.";
     case 400:
       return get400ErrorMessage(response);
     case 404:
-      return "Resource not found.";
+      return { errorTitle: "404", errorMessage: "Resource not found." };
     case 500:
-      return "Internal server error.";
+      return { errorTitle: "500", errorMessage: "Internal server error." };
     default:
-      return "An unexpected error has occurred.";
+      return { errorTitle: "Error", errorMessage: "An unexpected error has occurred." };
   }
 }
