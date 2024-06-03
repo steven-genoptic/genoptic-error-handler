@@ -10,8 +10,8 @@ type ErrorMessages = {
 };
 
 const errorTypeDescriptions: { [key: string]: string } = {
-  Unknown: "An unknown error occurred",
-  ActionFailed: "The action failed",
+  Unknown: "An unknown error has occurred",
+  ActionFailed: "The action has failed",
   ValueInvalid: "Value is invalid",
   ValueRequired: "Value is required",
   ValueTooLarge: "Value is too large",
@@ -21,7 +21,7 @@ const errorTypeDescriptions: { [key: string]: string } = {
   TypeUnknown: "Type is unknown",
   Unauthorized: "Unauthorized access",
   Unavailable: "Resource is unavailable",
-  Unhandled: "An unhandled error occurred",
+  Unhandled: "An unhandled error has occurred",
 };
 
 function get400ErrorMessage(response: Exception): ErrorMessages {
