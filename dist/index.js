@@ -2,8 +2,8 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getErrorMessage = void 0;
 const errorTypeDescriptions = {
-    Unknown: "An unknown error occurred",
-    ActionFailed: "The action failed",
+    Unknown: "An unknown error has occurred",
+    ActionFailed: "The action has failed",
     ValueInvalid: "Value is invalid",
     ValueRequired: "Value is required",
     ValueTooLarge: "Value is too large",
@@ -13,7 +13,7 @@ const errorTypeDescriptions = {
     TypeUnknown: "Type is unknown",
     Unauthorized: "Unauthorized access",
     Unavailable: "Resource is unavailable",
-    Unhandled: "An unhandled error occurred",
+    Unhandled: "An unhandled error has occurred",
 };
 function get400ErrorMessage(response) {
     const { type, details } = response;
